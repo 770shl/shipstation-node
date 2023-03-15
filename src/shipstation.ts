@@ -7,13 +7,14 @@ const stopcock = require('stopcock')
 
 const rateLimitOpts = {
   limit: 40,
-  interval: 1000 * 40
+  interval: 1000 * 40,
 }
 
 export enum RequestMethod {
   GET = 'GET',
   POST = 'POST',
-  DELETE = 'DELETE'
+  DELETE = 'DELETE',
+  PUT = 'PUT',
 }
 
 export interface IShipstationRequestOptions {
@@ -37,7 +38,8 @@ export default class Shipstation {
       options && options.apiKey ? options.apiKey : process.env.SS_API_KEY
     const secret =
       options && options.apiSecret
-        ? options.apiSecret : process.env.SS_API_SECRET
+        ? options.apiSecret
+        : process.env.SS_API_SECRET
 
     if (!key || !secret) {
       // tslint:disable-next-line:no-console
@@ -46,9 +48,7 @@ export default class Shipstation {
       )
     }
 
-    this.authorizationToken = base64.encode(
-      `${key}:${secret}`
-    )
+    this.authorizationToken = base64.encode(`${key}:${secret}`)
 
     // Globally define API ratelimiting
     this.request = stopcock(this.request, rateLimitOpts)
@@ -58,14 +58,14 @@ export default class Shipstation {
     url,
     method = RequestMethod.GET,
     useBaseUrl = true,
-    data
+    data,
   }: IShipstationRequestOptions) => {
     const opts: AxiosRequestConfig = {
       headers: {
-        Authorization: `Basic ${this.authorizationToken}`
+        Authorization: `Basic ${this.authorizationToken}`,
       },
       method,
-      url: `${useBaseUrl ? this.baseUrl : ''}${url}`
+      url: `${useBaseUrl ? this.baseUrl : ''}${url}`,
     }
 
     if (data) {

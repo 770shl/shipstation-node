@@ -4,6 +4,7 @@ import * as Models from './models'
 import { Carriers } from './resources/Carriers'
 import { Fulfillments } from './resources/Fulfillments'
 import { Orders } from './resources/Orders'
+import { Products } from './resources/Products'
 import { Shipments } from './resources/Shipments'
 import { Stores } from './resources/Stores'
 import { Warehouses } from './resources/Warehouses'
@@ -24,6 +25,7 @@ export default class ShipStationAPI {
   public shipments: Shipments
   public warehouses: Warehouses
   public webhooks: Webhooks
+  public products: Products
   public request: (
     args: IShipstationRequestOptions
   ) => Promise<AxiosResponse<any>>
@@ -38,6 +40,7 @@ export default class ShipStationAPI {
     this.shipments = new Shipments(this.ss)
     this.warehouses = new Warehouses(this.ss)
     this.webhooks = new Webhooks(this.ss)
+    this.products = new Products(this.ss)
     this.request = this.ss.request
   }
 }
