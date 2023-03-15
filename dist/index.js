@@ -12,6 +12,7 @@ exports.Models = Models;
 var Carriers_1 = require("./resources/Carriers");
 var Fulfillments_1 = require("./resources/Fulfillments");
 var Orders_1 = require("./resources/Orders");
+var Products_1 = require("./resources/Products");
 var Shipments_1 = require("./resources/Shipments");
 var Stores_1 = require("./resources/Stores");
 var Warehouses_1 = require("./resources/Warehouses");
@@ -28,6 +29,7 @@ var ShipStationAPI = (function () {
         this.shipments = new Shipments_1.Shipments(this.ss);
         this.warehouses = new Warehouses_1.Warehouses(this.ss);
         this.webhooks = new Webhooks_1.Webhooks(this.ss);
+        this.products = new Products_1.Products(this.ss);
         this.request = this.ss.request;
     }
     return ShipStationAPI;

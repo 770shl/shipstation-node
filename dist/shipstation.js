@@ -8,13 +8,14 @@ var base64 = require('base-64');
 var stopcock = require('stopcock');
 var rateLimitOpts = {
     limit: 40,
-    interval: 1000 * 40
+    interval: 1000 * 40,
 };
 var RequestMethod;
 (function (RequestMethod) {
     RequestMethod["GET"] = "GET";
     RequestMethod["POST"] = "POST";
     RequestMethod["DELETE"] = "DELETE";
+    RequestMethod["PUT"] = "PUT";
 })(RequestMethod = exports.RequestMethod || (exports.RequestMethod = {}));
 var Shipstation = (function () {
     function Shipstation(options) {
@@ -24,10 +25,10 @@ var Shipstation = (function () {
             var url = _a.url, _b = _a.method, method = _b === void 0 ? RequestMethod.GET : _b, _c = _a.useBaseUrl, useBaseUrl = _c === void 0 ? true : _c, data = _a.data;
             var opts = {
                 headers: {
-                    Authorization: "Basic " + _this.authorizationToken
+                    Authorization: "Basic " + _this.authorizationToken,
                 },
                 method: method,
-                url: "" + (useBaseUrl ? _this.baseUrl : '') + url
+                url: "" + (useBaseUrl ? _this.baseUrl : '') + url,
             };
             if (data) {
                 opts.data = data;
@@ -36,7 +37,8 @@ var Shipstation = (function () {
         };
         var key = options && options.apiKey ? options.apiKey : process.env.SS_API_KEY;
         var secret = options && options.apiSecret
-            ? options.apiSecret : process.env.SS_API_SECRET;
+            ? options.apiSecret
+            : process.env.SS_API_SECRET;
         if (!key || !secret) {
             throw new Error("APIKey and API Secret are required! Provided API Key: " + key + " API Secret: " + secret);
         }

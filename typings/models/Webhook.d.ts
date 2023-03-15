@@ -24,3 +24,7 @@ export interface ISubscribeToWebhookOpts {
 export interface ISubscriptionResponse {
     id: number;
 }
+export interface IWebhookMessage {
+    resource_url: string;
+    resource_type: WebhookEventType;
+}

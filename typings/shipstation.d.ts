@@ -1,7 +1,8 @@
 export declare enum RequestMethod {
     GET = "GET",
     POST = "POST",
-    DELETE = "DELETE"
+    DELETE = "DELETE",
+    PUT = "PUT"
 }
 export interface IShipstationRequestOptions {
     url: string;
@@ -17,5 +18,5 @@ export default class Shipstation {
     authorizationToken: string;
     private baseUrl;
     constructor(options?: IShipstationOptions);
-    request: ({ url, method, useBaseUrl, data }: IShipstationRequestOptions) => Promise<import("axios").AxiosResponse<any>>;
+    request: ({ url, method, useBaseUrl, data, }: IShipstationRequestOptions) => Promise<import("axios").AxiosResponse<any>>;
 }
