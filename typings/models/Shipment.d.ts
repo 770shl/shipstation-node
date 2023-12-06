@@ -2,6 +2,7 @@ import { IAddress } from './Address';
 import { IAdvancedOptions } from './AdvancedOptions';
 import { IDimensions } from './Dimensions';
 import { IInsuranceOptions } from './InsuranceOptions';
+import { IPaginatedResult } from './Pagination';
 import { IWeight } from './Weight';
 export interface IShipment {
     shipmentId: number;
@@ -34,4 +35,7 @@ export interface IShipment {
     shipmentItems: any[] | null;
     labelData: any | null;
     formData: any | null;
+}
+export interface IShipmentPaginationResult extends IPaginatedResult {
+    shipments: IShipment[];
 }
