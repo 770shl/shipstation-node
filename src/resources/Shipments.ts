@@ -12,7 +12,7 @@ export class Shipments extends BaseResource<IShipment> {
     super(shipstation, 'shipments')
   }
 
-  public async getAll(opts?: object): Promise<IShipmentPaginationResult[]> {
+  public async getAll(opts?: object): Promise<IShipmentPaginationResult> {
     const query = this.buildQueryStringFromParams(opts)
     const url = this.baseUrl + query
 
@@ -20,7 +20,7 @@ export class Shipments extends BaseResource<IShipment> {
       url,
       method: RequestMethod.GET,
     })
-    return response.data as IShipmentPaginationResult[]
+    return response.data as IShipmentPaginationResult
   }
 
   public async getRates(data?: IShippingRateOptions): Promise<IShippingRate[]> {
