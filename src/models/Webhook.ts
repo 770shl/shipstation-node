@@ -3,6 +3,8 @@ export type WebhookEventType =
   | 'ITEM_ORDER_NOTIFY'
   | 'SHIP_NOTIFY'
   | 'ITEM_SHIP_NOTIFY'
+  | 'FULFILLMENT_SHIPPED'
+  | 'FULFILLMENT_REJECTED'
 
 export interface IWebhook {
   IsLabelAPIHook: boolean
