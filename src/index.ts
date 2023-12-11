@@ -14,6 +14,7 @@ import Shipstation, {
   IShipstationOptions,
   RequestMethod,
 } from './shipstation'
+import { WebhookResource } from './resources/WebhookResource'
 
 export default class ShipStationAPI {
   private ss: Shipstation
@@ -26,6 +27,7 @@ export default class ShipStationAPI {
   public warehouses: Warehouses
   public webhooks: Webhooks
   public products: Products
+  public webhooksResource: WebhookResource
   public request: (
     args: IShipstationRequestOptions
   ) => Promise<AxiosResponse<any>>
@@ -41,6 +43,7 @@ export default class ShipStationAPI {
     this.warehouses = new Warehouses(this.ss)
     this.webhooks = new Webhooks(this.ss)
     this.products = new Products(this.ss)
+    this.webhooksResource = new WebhookResource(this.ss)
     this.request = this.ss.request
   }
 }
