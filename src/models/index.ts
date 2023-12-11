@@ -15,6 +15,5 @@ export * from './Warehouse'
 export * from './Webhook'
 export * from './Weight'
 export * from './Product'
-export * from './WebhookResource'
 
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>

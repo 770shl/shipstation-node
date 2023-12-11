@@ -19,7 +19,6 @@ var Warehouses_1 = require("./resources/Warehouses");
 var Webhooks_1 = require("./resources/Webhooks");
 var shipstation_1 = __importStar(require("./shipstation"));
 exports.RequestMethod = shipstation_1.RequestMethod;
-var WebhookResource_1 = require("./resources/WebhookResource");
 var ShipStationAPI = (function () {
     function ShipStationAPI(options) {
         this.ss = new shipstation_1.default(options);
@@ -31,7 +30,6 @@ var ShipStationAPI = (function () {
         this.warehouses = new Warehouses_1.Warehouses(this.ss);
         this.webhooks = new Webhooks_1.Webhooks(this.ss);
         this.products = new Products_1.Products(this.ss);
-        this.webhooksResource = new WebhookResource_1.WebhookResource(this.ss);
         this.request = this.ss.request;
     }
     return ShipStationAPI;

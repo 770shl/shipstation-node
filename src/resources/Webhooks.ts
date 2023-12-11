@@ -1,7 +1,10 @@
 import {
+  IOrderPaginationResult,
+  IShipmentPaginationResult,
   ISubscribeToWebhookOpts,
   ISubscriptionResponse,
   IWebhook,
+  IWebhookMessage,
   IWebhookResult,
 } from '../models'
 import Shipstation, { RequestMethod } from '../shipstation'
@@ -41,5 +44,23 @@ export class Webhooks extends BaseResource<IWebhook> {
     })
 
     return null
+  }
+
+  public async getResource(
+    data: IWebhookMessage
+  ): Promise<IOrderPaginationResult | IShipmentPaginationResult> {
+    const response = await this.shipstation.request({
+      url: data.resource_url,
+      method: RequestMethod.GET,
+    })
+
+    switch (data.resource_type) {
+      case 'ORDER_NOTIFY' || 'ORDER_NOTIFY_TEST':
+        return response.data as IOrderPaginationResult
+      case 'SHIP_NOTIFY' || 'ITEM_SHIP_NOTIFY':
+        return response.data as IShipmentPaginationResult
+      default:
+        return response.data
+    }
   }
 }

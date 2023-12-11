@@ -113,6 +113,30 @@ var Webhooks = (function (_super) {
             });
         });
     };
+    Webhooks.prototype.getResource = function (data) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4, this.shipstation.request({
+                            url: data.resource_url,
+                            method: shipstation_1.RequestMethod.GET,
+                        })];
+                    case 1:
+                        response = _a.sent();
+                        switch (data.resource_type) {
+                            case 'ORDER_NOTIFY' || 'ORDER_NOTIFY_TEST':
+                                return [2, response.data];
+                            case 'SHIP_NOTIFY' || 'ITEM_SHIP_NOTIFY':
+                                return [2, response.data];
+                            default:
+                                return [2, response.data];
+                        }
+                        return [2];
+                }
+            });
+        });
+    };
     return Webhooks;
 }(Base_1.BaseResource));
 exports.Webhooks = Webhooks;
