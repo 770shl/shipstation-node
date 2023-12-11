@@ -121,6 +121,7 @@ var Webhooks = (function (_super) {
                     case 0: return [4, this.shipstation.request({
                             url: data.resource_url,
                             method: shipstation_1.RequestMethod.GET,
+                            useBaseUrl: false,
                         })];
                     case 1:
                         response = _a.sent();

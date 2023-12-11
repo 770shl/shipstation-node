@@ -52,6 +52,7 @@ export class Webhooks extends BaseResource<IWebhook> {
     const response = await this.shipstation.request({
       url: data.resource_url,
       method: RequestMethod.GET,
+      useBaseUrl: false,
     })
 
     switch (data.resource_type) {
