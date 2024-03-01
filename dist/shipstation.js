@@ -22,10 +22,10 @@ var Shipstation = (function () {
         var _this = this;
         this.baseUrl = 'https://ssapi.shipstation.com/';
         this.request = function (_a) {
-            var url = _a.url, _b = _a.method, method = _b === void 0 ? RequestMethod.GET : _b, _c = _a.useBaseUrl, useBaseUrl = _c === void 0 ? true : _c, data = _a.data;
+            var url = _a.url, _b = _a.method, method = _b === void 0 ? RequestMethod.GET : _b, _c = _a.useBaseUrl, useBaseUrl = _c === void 0 ? true : _c, data = _a.data, authorizationToken = _a.authorizationToken;
             var opts = {
                 headers: {
-                    Authorization: "Basic " + _this.authorizationToken,
+                    Authorization: "Basic " + (authorizationToken ? authorizationToken : _this.authorizationToken),
                 },
                 method: method,
                 url: "" + (useBaseUrl ? _this.baseUrl : '') + url,

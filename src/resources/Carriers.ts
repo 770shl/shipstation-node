@@ -7,11 +7,12 @@ export class Carriers extends BaseResource<ICarrier> {
     super(shipstation, 'carriers')
   }
 
-  public async getAll(): Promise<ICarrier[]> {
+  public async getAll(authorizationToken?: string): Promise<ICarrier[]> {
     const url = this.baseUrl
     const response = await this.shipstation.request({
       url,
-      method: RequestMethod.GET
+      method: RequestMethod.GET,
+      authorizationToken,
     })
     return response.data as ICarrier[]
   }

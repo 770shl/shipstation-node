@@ -7,13 +7,17 @@ export class Warehouses extends BaseResource<IWarehouse> {
     super(shipstation, 'warehouses')
   }
 
-  public async getAll(opts?: object): Promise<IWarehouse[]> {
+  public async getAll(
+    opts?: object,
+    authorizationToken?: string
+  ): Promise<IWarehouse[]> {
     const query = this.buildQueryStringFromParams(opts)
     const url = this.baseUrl + query
 
     const response = await this.shipstation.request({
       url,
-      method: RequestMethod.GET
+      method: RequestMethod.GET,
+      authorizationToken,
     })
     return response.data as IWarehouse[]
   }

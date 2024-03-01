@@ -9,6 +9,7 @@ export interface IShipstationRequestOptions {
     method?: RequestMethod;
     useBaseUrl?: boolean;
     data?: any;
+    authorizationToken?: string;
 }
 export interface IShipstationOptions {
     apiKey?: string;
@@ -18,5 +19,5 @@ export default class Shipstation {
     authorizationToken: string;
     private baseUrl;
     constructor(options?: IShipstationOptions);
-    request: ({ url, method, useBaseUrl, data, }: IShipstationRequestOptions) => Promise<import("axios").AxiosResponse<any>>;
+    request: ({ url, method, useBaseUrl, data, authorizationToken, }: IShipstationRequestOptions) => Promise<import("axios").AxiosResponse<any>>;
 }

@@ -11,13 +11,17 @@ export class Products extends BaseResource<IProduct> {
     super(shipstation, 'products')
   }
 
-  public async getAll(opts?: object): Promise<IProductPaginationResult> {
+  public async getAll(
+    opts?: object,
+    authorizationToken?: string
+  ): Promise<IProductPaginationResult> {
     const query = this.buildQueryStringFromParams(opts)
     const url = this.baseUrl + query
 
     const response = await this.shipstation.request({
       url,
       method: RequestMethod.GET,
+      authorizationToken,
     })
     return response.data as IProductPaginationResult
   }
@@ -27,13 +31,15 @@ export class Products extends BaseResource<IProduct> {
   // The entire resource must be provided in the body of the request.
   public async update(
     id: number,
-    data: IProduct
+    data: IProduct,
+    authorizationToken?: string
   ): Promise<IUpdateProductResponse> {
     const url = `${this.baseUrl}/${id}`
     const response = await this.shipstation.request({
       url,
       method: RequestMethod.PUT,
       data,
+      authorizationToken,
     })
 
     return response.data as IUpdateProductResponse

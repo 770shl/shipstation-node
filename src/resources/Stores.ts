@@ -12,7 +12,10 @@ export class Stores extends BaseResource<IStore> {
     super(shipstation, 'stores')
   }
 
-  public async getAll(opts?: IGetAllStoresOptions): Promise<IStore[]> {
+  public async getAll(
+    opts?: IGetAllStoresOptions,
+    authorizationToken?: string
+  ): Promise<IStore[]> {
     let url = this.baseUrl
 
     if (typeof opts !== 'undefined') {
@@ -31,7 +34,8 @@ export class Stores extends BaseResource<IStore> {
 
     const response = await this.shipstation.request({
       url,
-      method: RequestMethod.GET
+      method: RequestMethod.GET,
+      authorizationToken,
     })
 
     return response.data as IStore[]

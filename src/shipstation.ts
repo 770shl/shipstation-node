@@ -22,6 +22,7 @@ export interface IShipstationRequestOptions {
   method?: RequestMethod
   useBaseUrl?: boolean
   data?: any
+  authorizationToken?: string
 }
 
 export interface IShipstationOptions {
@@ -59,10 +60,13 @@ export default class Shipstation {
     method = RequestMethod.GET,
     useBaseUrl = true,
     data,
+    authorizationToken,
   }: IShipstationRequestOptions) => {
     const opts: AxiosRequestConfig = {
       headers: {
-        Authorization: `Basic ${this.authorizationToken}`,
+        Authorization: `Basic ${
+          authorizationToken ? authorizationToken : this.authorizationToken
+        }`,
       },
       method,
       url: `${useBaseUrl ? this.baseUrl : ''}${url}`,

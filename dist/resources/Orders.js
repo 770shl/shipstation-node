@@ -58,7 +58,7 @@ var Orders = (function (_super) {
         _this.shipstation = shipstation;
         return _this;
     }
-    Orders.prototype.getAll = function (opts) {
+    Orders.prototype.getAll = function (opts, authorizationToken) {
         return __awaiter(this, void 0, void 0, function () {
             var query, url, response;
             return __generator(this, function (_a) {
@@ -68,7 +68,8 @@ var Orders = (function (_super) {
                         url = this.baseUrl + query;
                         return [4, this.shipstation.request({
                                 url: url,
-                                method: shipstation_1.RequestMethod.GET
+                                method: shipstation_1.RequestMethod.GET,
+                                authorizationToken: authorizationToken,
                             })];
                     case 1:
                         response = _a.sent();
@@ -77,7 +78,7 @@ var Orders = (function (_super) {
             });
         });
     };
-    Orders.prototype.createOrUpdate = function (data) {
+    Orders.prototype.createOrUpdate = function (data, authorizationToken) {
         return __awaiter(this, void 0, void 0, function () {
             var url, response;
             return __generator(this, function (_a) {
@@ -87,7 +88,8 @@ var Orders = (function (_super) {
                         return [4, this.shipstation.request({
                                 url: url,
                                 method: shipstation_1.RequestMethod.POST,
-                                data: data
+                                data: data,
+                                authorizationToken: authorizationToken,
                             })];
                     case 1:
                         response = _a.sent();
@@ -96,7 +98,7 @@ var Orders = (function (_super) {
             });
         });
     };
-    Orders.prototype.createOrUpdateBulk = function (data) {
+    Orders.prototype.createOrUpdateBulk = function (data, authorizationToken) {
         return __awaiter(this, void 0, void 0, function () {
             var url, response;
             return __generator(this, function (_a) {
@@ -106,7 +108,8 @@ var Orders = (function (_super) {
                         return [4, this.shipstation.request({
                                 url: url,
                                 method: shipstation_1.RequestMethod.POST,
-                                data: data
+                                data: data,
+                                authorizationToken: authorizationToken,
                             })];
                     case 1:
                         response = _a.sent();
@@ -115,7 +118,7 @@ var Orders = (function (_super) {
             });
         });
     };
-    Orders.prototype.createLabel = function (data) {
+    Orders.prototype.createLabel = function (data, authorizationToken) {
         return __awaiter(this, void 0, void 0, function () {
             var url, response;
             return __generator(this, function (_a) {
@@ -125,7 +128,8 @@ var Orders = (function (_super) {
                         return [4, this.shipstation.request({
                                 url: url,
                                 method: shipstation_1.RequestMethod.POST,
-                                data: data
+                                data: data,
+                                authorizationToken: authorizationToken,
                             })];
                     case 1:
                         response = _a.sent();

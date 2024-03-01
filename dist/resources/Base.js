@@ -44,7 +44,7 @@ var BaseResource = (function () {
         this.shipstation = shipstation;
         this.baseUrl = baseUrl;
     }
-    BaseResource.prototype.get = function (id) {
+    BaseResource.prototype.get = function (id, authorizationToken) {
         return __awaiter(this, void 0, void 0, function () {
             var url, response;
             return __generator(this, function (_a) {
@@ -53,7 +53,8 @@ var BaseResource = (function () {
                         url = this.baseUrl + "/" + id;
                         return [4, this.shipstation.request({
                                 url: url,
-                                method: shipstation_1.RequestMethod.GET
+                                method: shipstation_1.RequestMethod.GET,
+                                authorizationToken: authorizationToken,
                             })];
                     case 1:
                         response = _a.sent();
@@ -63,11 +64,11 @@ var BaseResource = (function () {
         });
     };
     BaseResource.prototype.buildQueryStringFromParams = function (params) {
-        var qs = "";
-        if (typeof params !== "undefined") {
+        var qs = '';
+        if (typeof params !== 'undefined') {
             Object.entries(params).forEach(function (_a, index) {
                 var key = _a[0], value = _a[1];
-                var qsStart = index === 0 ? "?" : "&";
+                var qsStart = index === 0 ? '?' : '&';
                 qs += "" + qsStart + key + "=" + value;
             });
         }

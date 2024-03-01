@@ -58,7 +58,7 @@ var Webhooks = (function (_super) {
         _this.shipstation = shipstation;
         return _this;
     }
-    Webhooks.prototype.getAll = function () {
+    Webhooks.prototype.getAll = function (authorizationToken) {
         return __awaiter(this, void 0, void 0, function () {
             var url, response;
             return __generator(this, function (_a) {
@@ -68,6 +68,7 @@ var Webhooks = (function (_super) {
                         return [4, this.shipstation.request({
                                 url: url,
                                 method: shipstation_1.RequestMethod.GET,
+                                authorizationToken: authorizationToken,
                             })];
                     case 1:
                         response = _a.sent();
@@ -76,7 +77,7 @@ var Webhooks = (function (_super) {
             });
         });
     };
-    Webhooks.prototype.subscribe = function (data) {
+    Webhooks.prototype.subscribe = function (data, authorizationToken) {
         return __awaiter(this, void 0, void 0, function () {
             var url, response;
             return __generator(this, function (_a) {
@@ -87,6 +88,7 @@ var Webhooks = (function (_super) {
                                 url: url,
                                 method: shipstation_1.RequestMethod.POST,
                                 data: data,
+                                authorizationToken: authorizationToken,
                             })];
                     case 1:
                         response = _a.sent();
@@ -95,7 +97,7 @@ var Webhooks = (function (_super) {
             });
         });
     };
-    Webhooks.prototype.unsubscribe = function (id) {
+    Webhooks.prototype.unsubscribe = function (id, authorizationToken) {
         return __awaiter(this, void 0, void 0, function () {
             var url;
             return __generator(this, function (_a) {
@@ -105,6 +107,7 @@ var Webhooks = (function (_super) {
                         return [4, this.shipstation.request({
                                 url: url,
                                 method: shipstation_1.RequestMethod.DELETE,
+                                authorizationToken: authorizationToken,
                             })];
                     case 1:
                         _a.sent();
@@ -113,7 +116,7 @@ var Webhooks = (function (_super) {
             });
         });
     };
-    Webhooks.prototype.getResource = function (data) {
+    Webhooks.prototype.getResource = function (data, authorizationToken) {
         return __awaiter(this, void 0, void 0, function () {
             var response;
             return __generator(this, function (_a) {
@@ -122,6 +125,7 @@ var Webhooks = (function (_super) {
                             url: data.resource_url,
                             method: shipstation_1.RequestMethod.GET,
                             useBaseUrl: false,
+                            authorizationToken: authorizationToken,
                         })];
                     case 1:
                         response = _a.sent();

@@ -58,7 +58,7 @@ var Stores = (function (_super) {
         _this.shipstation = shipstation;
         return _this;
     }
-    Stores.prototype.getAll = function (opts) {
+    Stores.prototype.getAll = function (opts, authorizationToken) {
         return __awaiter(this, void 0, void 0, function () {
             var url, marketplaceQuery, response;
             return __generator(this, function (_a) {
@@ -79,7 +79,8 @@ var Stores = (function (_super) {
                         }
                         return [4, this.shipstation.request({
                                 url: url,
-                                method: shipstation_1.RequestMethod.GET
+                                method: shipstation_1.RequestMethod.GET,
+                                authorizationToken: authorizationToken,
                             })];
                     case 1:
                         response = _a.sent();

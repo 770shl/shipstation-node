@@ -4,6 +4,6 @@ import { BaseResource } from './Base';
 export declare class Products extends BaseResource<IProduct> {
     protected shipstation: Shipstation;
     constructor(shipstation: Shipstation);
-    getAll(opts?: object): Promise<IProductPaginationResult>;
-    update(id: number, data: IProduct): Promise<IUpdateProductResponse>;
+    getAll(opts?: object, authorizationToken?: string): Promise<IProductPaginationResult>;
+    update(id: number, data: IProduct, authorizationToken?: string): Promise<IUpdateProductResponse>;
 }

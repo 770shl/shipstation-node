@@ -34,3 +34,13 @@ const shipstation = new ShipStation({
 })
 ```
 
+- Optionally, set Shipstation Authorization Token for each request to override the default credentials
+
+For example:
+
+```js
+const token = toBase64(`${apiKey}:${apiSecret}`);
+const order = await shipstation.orders.get(1244, token)
+```
+
+

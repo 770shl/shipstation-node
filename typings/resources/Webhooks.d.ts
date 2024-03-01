@@ -4,8 +4,8 @@ import { BaseResource } from './Base';
 export declare class Webhooks extends BaseResource<IWebhook> {
     protected shipstation: Shipstation;
     constructor(shipstation: Shipstation);
-    getAll(): Promise<IWebhookResult>;
-    subscribe(data: ISubscribeToWebhookOpts): Promise<ISubscriptionResponse>;
-    unsubscribe(id: number): Promise<null>;
-    getResource(data: IWebhookMessage): Promise<IOrderPaginationResult | IShipmentPaginationResult>;
+    getAll(authorizationToken?: string): Promise<IWebhookResult>;
+    subscribe(data: ISubscribeToWebhookOpts, authorizationToken?: string): Promise<ISubscriptionResponse>;
+    unsubscribe(id: number, authorizationToken?: string): Promise<null>;
+    getResource(data: IWebhookMessage, authorizationToken?: string): Promise<IOrderPaginationResult | IShipmentPaginationResult>;
 }
